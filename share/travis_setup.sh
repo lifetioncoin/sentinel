@@ -1,9 +1,9 @@
 #!/bin/bash
 set -evx
 
-mkdir ~/.dashcore
+mkdir ~/.lifetioncoincore
 
 # safety check
-if [ ! -f ~/.dashcore/.dash.conf ]; then
-  cp share/dash.conf.example ~/.dashcore/dash.conf
+if [ ! -f ~/.lifetioncoincore/.lifetioncoin.conf ]; then
+  cp share/lifetioncoin.conf.example ~/.lifetioncoincore/lifetioncoin.conf
 fi
