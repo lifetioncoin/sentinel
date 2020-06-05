@@ -3,29 +3,29 @@
 """
 import sys
 import os
-from dash_config import DashConfig
+from lifetioncoin_config import LifetionCoinConfig
 
 default_sentinel_config = os.path.normpath(
     os.path.join(os.path.dirname(__file__), '../sentinel.conf')
 )
 sentinel_config_file = os.environ.get('SENTINEL_CONFIG', default_sentinel_config)
-sentinel_cfg = DashConfig.tokenize(sentinel_config_file)
+sentinel_cfg = LifetionCoinConfig.tokenize(sentinel_config_file)
 sentinel_version = "1.4.0"
 
 
-def get_dash_conf():
+def get_lifetioncoin_conf():
     if sys.platform == 'win32':
-        dash_conf = os.path.join(os.getenv('APPDATA'), "DashCore/dash.conf")
+        lifetioncoin_conf = os.path.join(os.getenv('APPDATA'), "LifetionCoinCore/lifetioncoin.conf")
     else:
         home = os.environ.get('HOME')
 
-        dash_conf = os.path.join(home, ".dashcore/dash.conf")
+        lifetioncoin_conf = os.path.join(home, ".lifetioncoincore/lifetioncoin.conf")
         if sys.platform == 'darwin':
-            dash_conf = os.path.join(home, "Library/Application Support/DashCore/dash.conf")
+            lifetioncoin_conf = os.path.join(home, "Library/Application Support/LifetionCoinCore/lifetioncoin.conf")
 
-    dash_conf = sentinel_cfg.get('dash_conf', dash_conf)
+    lifetioncoin_conf = sentinel_cfg.get('lifetioncoin_conf', lifetioncoin_conf)
 
-    return dash_conf
+    return lifetioncoin_conf
 
 
 def get_network():
@@ -85,7 +85,7 @@ def get_db_conn():
     return db
 
 
-dash_conf = get_dash_conf()
+lifetioncoin_conf = get_lifetioncoin_conf()
 network = get_network()
 rpc_host = get_rpchost()
 db = get_db_conn()
